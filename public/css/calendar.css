@@ -1,20 +1,20 @@
 .calendar__table {
-    width: 100vw;
-    max-width: 100vw;
-    min-width: 100vw;
-    height: calc(100vh - 128px);
+    width: 60vw;
+    max-width: 60vw;
+    min-width: 60vw;
+    height: calc(80vh - 156px);
+    margin: auto;
 }
 
-.calendar__table td {
+.calendar__table .tds {
     border: 1px solid silver;
-    padding: 10px;
     vertical-align: top;
     width: 14.29%;
-    height: 20%;
+    height: calc(20% - 27px);
 }
 
-.calendar__table--6weeks td {
-    height: 16.66%;
+.calendar__table--6weeks .tds {
+    height: calc(16.66% - 27px);
 }
 
 .calendar__weekday {
@@ -39,6 +39,12 @@
 
     .btns {
         font-size: 0.7em;
+    }
+
+    .calendar__table {
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 100vw;
     }
 }
 

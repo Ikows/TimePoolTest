@@ -22,14 +22,18 @@
 
 
     <table class="calendar__table calendar__table--{{ month.getWeeks}}weeks">
+        <tr>
+            {% for day in month.days %}
+            <th class="text-center calendar__weekday" style="height: 27px;">{{ day }}</th>
+            {% endfor %}
+        </tr>
         {% for i in 0..month.getWeeks -1 %}
         {% set ium = loop.index0   %}
            <tr>
                {% for day in month.days %}
                     {% set datum = startingDay|date_modify("+" ~ (loop.index0 + (ium*7)) ~ " day") %}
-                   <td>
-                       {% if ium == 0 %}<div class="calendar__weekday">{{ day }}</div>{% endif %}
-                       <div class="calendar__day {% if not month.inMonth(datum) %}calendar__otherMonth{% endif %}">{{ datum|date("d") }}</div>
+                   <td class="tds">
+                       <div class="calendar__day {% if not month.inMonth(datum) %}calendar__otherMonth{% endif %}">{{ datum|date("d") }}<div class="ok"></div></div>
                    </td>
                {% endfor %}
            </tr>
