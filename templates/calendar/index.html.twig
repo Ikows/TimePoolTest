@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/calendar.css') }}"> {% endblock %}
+
+{% block body %}
+
+        <nav class="navbar navbar-dark bg-primary mb-1">
+            <a href="index.php" class="navbar-brand">TimePool Calendar</a>
+        </nav>
+        <div class="d-flex justify-content-between align-items-center mx-3 mb-1">
+            <h1 class="monthTitle">{{ month.toString }}</h1>
+            <div>
+                <a href="{{ path('calendar', {'month': month.prevMonth.month, 'year': month.prevMonth.year}) }}"
+                   class="btn btn-info btns">Mois précédent</a>
+                <a href="{{ path('calendar', {'month': month.nextMonth.month, 'year': month.nextMonth.year}) }}"
+                   class="btn btn-info btns">Mois suivant</a>
+            </div>
+        </div>
+
+
+    <table class="calendar__table calendar__table--{{ month.getWeeks}}weeks">
+        {% for i in 0..month.getWeeks -1 %}
+        {% set ium = loop.index0   %}
+           <tr>
+               {% for day in month.days %}
+                    {% set datum = startingDay|date_modify("+" ~ (loop.index0 + (ium*7)) ~ " day") %}
+                   <td>
+                       {% if ium == 0 %}<div class="calendar__weekday">{{ day }}</div>{% endif %}
+                       <div class="calendar__day {% if not month.inMonth(datum) %}calendar__otherMonth{% endif %}">{{ datum|date("d") }}</div>
+                   </td>
+               {% endfor %}
+           </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

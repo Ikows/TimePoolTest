@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+
+    <div align="center" style="margin-top: 200px;">{{ form_start(form) }}
+        {{ form_rest(form) }}
+        <input type="submit" name="submit" id="submit" value="Create account">
+        {{ form_end(form) }}</div>
+
+    <br>
+    <br>
+
+    <a href="{{ path('calendar') }}" class="btn btn-danger">Calendrier</a>
+
+{% endblock %}

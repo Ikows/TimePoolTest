@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<h1 align="center" style="margin-top: 200px;">connexion</h1>
+
+    <div align="center">
+        <form action="{{ path('app_login') }}" method="post">
+            <input type="text" name="_username" placeholder="mail"> <br>
+            <input type="password" name="_password" placeholder="pass"> <br>
+            <input type="submit" name="submit" id="submit" value="submit">
+        </form>
+    </div>
+{% endblock %}
